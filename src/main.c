@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <getopt.h>
 
-#define CLEAN_STATE_DURATION_MS 10000
+#define CLEAN_STATE_DURATION_MS 60000
 
 void display_splash_screen(const char *bmp_path)
 {
@@ -63,15 +63,28 @@ void clean_screen(int cycles)
 	printf("%s: init\n", __func__);
 	EPD_2IN15G_Init();
 
-	for (int i = 0; i < cycles; i++) {
-		printf("%s: clear white\n", __func__);
+	for (int i = 1; i <= cycles; i++) {
+		printf("%s: (%d/%d) clear white\n", __func__, i, cycles);
 		EPD_2IN15G_Clear(EPD_2IN15G_WHITE);
+
+		printf("%s:(%d/%d) go to sleep\n", __func__, i, cycles);
+		EPD_2IN15G_Sleep();
+
+		printf("%s: (%d/%d) %d delay\n", __func__, CLEAN_STATE_DURATION_MS, i, cycles);
 		DEV_Delay_ms(CLEAN_STATE_DURATION_MS);
 
-		printf("%s: clear black\n", __func__);
+		printf("%s: (%d/%d) init\n", __func__, i, cycles);
+		EPD_2IN15G_Init();
+
+		printf("%s: (%d/%d) clear black\n", __func__, i, cycles);
 		EPD_2IN15G_Clear(EPD_2IN15G_BLACK);
-		DEV_Delay_ms(CLEAN_STATE_DURATION_MS);
+
+		printf("%s: (%d/%d) short delay\n", __func__, i, cycles);
+		DEV_Delay_ms(5000);
 	}
+
+	printf("%s: init\n", __func__);
+	EPD_2IN15G_Init();
 
 	printf("%s: clear white\n", __func__);
 	EPD_2IN15G_Clear(EPD_2IN15G_WHITE);
