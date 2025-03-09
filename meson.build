@@ -16,7 +16,6 @@ src_files = files('src/main.c',
 executable('epaper-utility',
            src_files,
            include_directories: include_dirs,
-           c_args : ['-Werror'],
            link_args: ['-lm'],
            install: true,
            install_dir: '/usr/bin'
