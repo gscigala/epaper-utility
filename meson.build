@@ -16,7 +16,7 @@ src_files = files('src/main.c',
 executable('epaper-utility',
            src_files,
            include_directories: include_dirs,
-           link_args: ['-lm'],
+           link_args: ['-Wl,--gc-sections','-lbcm2835','-lm'],
            install: true,
            install_dir: '/usr/bin'
 )
