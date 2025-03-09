@@ -1,5 +1,5 @@
 # epaper-utility
-Tool to manage WaveShare 2.15 inch G+ e-paper screen, with cleaning sequence and splash screen.
+Tool to manage WaveShare 2.15 inch G e-paper screen, with cleaning sequence and splash screen.
 
 ## Features
 
@@ -8,7 +8,7 @@ Tool to manage WaveShare 2.15 inch G+ e-paper screen, with cleaning sequence and
 
 ## Requirements
 
-- Waveshare 2.15 inch G+ e-paper display.
+- Waveshare 2.15 inch G e-paper display.
 
 ## Compilation
 
