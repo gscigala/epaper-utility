@@ -70,7 +70,7 @@ void clean_screen(int cycles)
 		printf("%s:(%d/%d) go to sleep\n", __func__, i, cycles);
 		EPD_2IN15G_Sleep();
 
-		printf("%s: (%d/%d) %d delay\n", __func__, CLEAN_STATE_DURATION_MS, i, cycles);
+		printf("%s: (%d/%d) %d delay\n", __func__, i, cycles, CLEAN_STATE_DURATION_MS);
 		DEV_Delay_ms(CLEAN_STATE_DURATION_MS);
 
 		printf("%s: (%d/%d) init\n", __func__, i, cycles);
