@@ -7,10 +7,10 @@ include_dirs = include_directories(
 )
 
 src_files = files('src/main.c',
-                  'lib/e-Paper/RaspberryPi_JetsonNano/c/lib/Config/DEV_Config.c',
-                  'lib/e-Paper/RaspberryPi_JetsonNano/c/lib/e-Paper/EPD_2in15g.c',
-                  'lib/e-Paper/RaspberryPi_JetsonNano/c/lib/GUI/GUI_Paint.c',
-                  'lib/e-Paper/RaspberryPi_JetsonNano/c/lib/GUI/GUI_BMPfile.c',
+                  'lib/e-Paper/E-paper_Separate_Program/2in15_e-Paper_G/RaspberryPi_JetsonNano/c/lib/Config/DEV_Config.c',
+                  'lib/e-Paper/E-paper_Separate_Program/2in15_e-Paper_G/RaspberryPi_JetsonNano/c/lib/e-Paper/EPD_2in15g.c',
+                  'lib/e-Paper/E-paper_Separate_Program/2in15_e-Paper_G/RaspberryPi_JetsonNano/c/lib/GUI/GUI_Paint.c',
+                  'lib/e-Paper/E-paper_Separate_Program/2in15_e-Paper_G/RaspberryPi_JetsonNano/c/lib/GUI/GUI_BMPfile.c',
 )
 
 executable('epaper-utility',
