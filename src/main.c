@@ -37,10 +37,6 @@ void display_splash_screen(const char *bmp_path)
 	Paint_SelectImage(image);
 	GUI_ReadBmp_RGB_4Color(bmp_path, 0, 0);
 	EPD_2IN15G_Display(image);
-	DEV_Delay_ms(5000);
-    
-	printf("%s: clear white\n", __func__);
-	EPD_2IN15G_Clear(EPD_2IN15G_WHITE);
 
 	printf("%s: go to sleep\n", __func__);
 	EPD_2IN15G_Sleep();
