@@ -52,22 +52,30 @@ void clean_screen(int cycles)
 {
 	printf("%s\n", __func__);
 
-	if(DEV_Module_Init() != 0) {
-		return;
-	}
-
-	printf("%s: init\n", __func__);
-	EPD_2IN15G_Init();
-
 	for (int i = 1; i <= cycles; i++) {
+		if(DEV_Module_Init() != 0) {
+			return;
+		}
+
+		printf("%s: (%d/%d) init\n", __func__, i, cycles);
+		EPD_2IN15G_Init();
+	
 		printf("%s: (%d/%d) clear white\n", __func__, i, cycles);
 		EPD_2IN15G_Clear(EPD_2IN15G_WHITE);
 
 		printf("%s:(%d/%d) go to sleep\n", __func__, i, cycles);
 		EPD_2IN15G_Sleep();
+		DEV_Delay_ms(2000); // required by Waveshare
+
+		printf("%s: (%d/%d) close 5V, Module enters 0 power consumption\n", __func__, i, cycles);
+		DEV_Module_Exit();
 
 		printf("%s: (%d/%d) %d delay\n", __func__, i, cycles, CLEAN_STATE_DURATION_MS);
 		DEV_Delay_ms(CLEAN_STATE_DURATION_MS);
+
+		if(DEV_Module_Init() != 0) {
+			return;
+		}
 
 		printf("%s: (%d/%d) init\n", __func__, i, cycles);
 		EPD_2IN15G_Init();
@@ -75,8 +83,19 @@ void clean_screen(int cycles)
 		printf("%s: (%d/%d) clear black\n", __func__, i, cycles);
 		EPD_2IN15G_Clear(EPD_2IN15G_BLACK);
 
+		printf("%s: (%d/%d) go to sleep\n", __func__, i, cycles);
+		EPD_2IN15G_Sleep();
+		DEV_Delay_ms(2000); // required by Waveshare
+
+		printf("%s: (%d/%d) close 5V, Module enters 0 power consumption\n", __func__, i, cycles);
+		DEV_Module_Exit();
+
 		printf("%s: (%d/%d) short delay\n", __func__, i, cycles);
 		DEV_Delay_ms(5000);
+	}
+
+	if(DEV_Module_Init() != 0) {
+		return;
 	}
 
 	printf("%s: init\n", __func__);
